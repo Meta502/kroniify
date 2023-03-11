@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models.fields import uuid
 from django.utils import timezone
 from pyawscron import AWSCron

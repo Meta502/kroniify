@@ -1,9 +1,9 @@
-from scheduler.views.create_schedule import CreateScheduleView
+from scheduler.views.list_create_schedule import ListCreateScheduleView
 from django.urls import path
 
-from scheduler.views.edit_schedule import EditScheduleView
+from scheduler.views.edit_delete_schedule import EditDeleteScheduleView
 
 urlpatterns = [
-    path("", CreateScheduleView.as_view(), name="create-schedule"),
-    path("<uuid:schedule_id>", EditScheduleView.as_view(), name="edit-schedule")
+    path("", ListCreateScheduleView.as_view(), name="create-schedule"),
+    path("<uuid:schedule_id>", EditDeleteScheduleView.as_view(), name="edit-schedule")
 ]
