@@ -23,6 +23,7 @@ def event_handler(msg): # pragma: no cover
         pass
 
 def process_message(key):
+    print(f"Event Received: {key}")
     schedule = Schedule.objects.filter(id=key).first()
     next_schedules = AWSCron.get_next_n_schedule(2, timezone.now() + timezone.timedelta(seconds=1), schedule.cron_expression)
 

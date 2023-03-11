@@ -17,7 +17,7 @@ class CreateScheduleService:
         )
 
         return {
-            "id": uuid.uuid4(),
+            "id": schedule.id, 
             "payload": payload,
             "cron_expression": cron_expression,
             "next_occurrences": cron_schedule,

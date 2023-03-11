@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models.fields import uuid
+from django.utils import timezone
+from pyawscron import AWSCron
 from utils.schedule_event import schedule_event
 from utils.unschedule_event import unschedule_event
 
@@ -15,6 +17,12 @@ class Schedule(models.Model):
         schedule_event(self.id, self.cron_expression)
 
     def delete(self):
-        unschedule_event(self.id)
-        print("HELLO")
         super().delete()
+        unschedule_event(self.id)
+
+    def __str__(self):
+        try:
+            next_occurrence = AWSCron.get_next_n_schedule(1, timezone.now(), self.cron_expression)[0]
+            return f"{self.id} - {self.target_url} - Next Occurrence: {next_occurrence}"
+        except:
+            return f"{self.id} - Invalid Cron Expression"

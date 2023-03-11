@@ -6,7 +6,7 @@ from rest_framework import permissions
 
 from scheduler.services.create_schedule import CreateScheduleService
 
-class ScheduleView(APIView):
+class CreateScheduleView(APIView):
     permission_classes = [permissions.AllowAny]
 
     class CreateScheduleRequestSerializer(serializers.Serializer):
@@ -20,7 +20,12 @@ class ScheduleView(APIView):
         cron_expression = serializers.CharField()
         next_occurrences = serializers.ListSerializer(child=serializers.DateTimeField())
         
-    
+    class EditScheduleRequestSerializer(serializers.Serializer):
+        id = serializers.UUIDField()
+        target_url = serializers.URLField()
+        payload = serializers.JSONField()
+        cron_expression = serializers.CharField()
+
     @swagger_auto_schema(
         request_body=CreateScheduleRequestSerializer(),
         responses={
@@ -35,4 +40,3 @@ class ScheduleView(APIView):
         schedule = CreateScheduleService.run(**serializer.data)
 
         return Response(self.CreateScheduleResponseSerializer(schedule).data)
-
