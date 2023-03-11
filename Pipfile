@@ -8,6 +8,10 @@ django = "==4.1.7"
 psycopg2-binary = "*"
 load-dotenv = "*"
 pyawscron = "*"
+djangorestframework = "*"
+drf-yasg = "*"
+redis = "*"
+requests = "*"
 
 [dev-packages]
 
