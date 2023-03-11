@@ -4,6 +4,8 @@ from rest_framework.schemas.coreapi import serializers
 from rest_framework.views import APIView
 from rest_framework import permissions
 
+import re
+
 from scheduler.services.create_schedule import CreateScheduleService
 
 class CreateScheduleView(APIView):
@@ -12,7 +14,7 @@ class CreateScheduleView(APIView):
     class CreateScheduleRequestSerializer(serializers.Serializer):
         target_url = serializers.URLField()
         payload = serializers.JSONField()
-        cron_expression = serializers.CharField()
+        cron_expression = serializers.RegexField(regex="((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,7})")
 
     class CreateScheduleResponseSerializer(serializers.Serializer): 
         id = serializers.UUIDField()

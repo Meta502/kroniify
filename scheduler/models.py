@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.fields import uuid
 from django.utils import timezone
+
 from pyawscron import AWSCron
 from utils.schedule_event import schedule_event
 from utils.unschedule_event import unschedule_event
@@ -11,6 +13,8 @@ class Schedule(models.Model):
     payload = models.JSONField()
     cron_expression = models.CharField(max_length=128)
     target_url = models.URLField()
+
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         super().save(force_insert, force_update, using, update_fields)
