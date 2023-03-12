@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1.4
 FROM python:3.10-alpine AS builder
 EXPOSE 8000
-WORKDIR /app 
+WORKDIR /app
+RUN apk update 
+RUN apk add python3-dev gcc libc-dev
 COPY Pipfile /app
 COPY Pipfile.lock /app
 RUN pip3 install pipenv

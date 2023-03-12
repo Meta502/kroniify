@@ -42,9 +42,10 @@ def process_message(key):
         }
     )
 
-# Creating Redis and pubsub Connection
+
 conn = redis.Redis(
-    port=6380
+    host=os.getenv("REDIS_HOST", "localhost"),
+    port=int(os.getenv("REDIS_PORT", "6379"))
 )
 pubsub = conn.pubsub()
 

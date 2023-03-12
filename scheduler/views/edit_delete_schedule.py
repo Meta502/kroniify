@@ -33,7 +33,7 @@ class EditDeleteScheduleView(APIView):
         serializer = self.EditScheduleRequestSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        edited_schedule = EditScheduleService.run(id=schedule_id, user=request.user, data=serializer.data)
+        edited_schedule = EditScheduleService.run(id=schedule_id, data=serializer.data)
 
         return Response(
             self.EditScheduleResponseSerializer(edited_schedule).data,

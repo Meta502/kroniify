@@ -12,6 +12,7 @@ djangorestframework = "*"
 drf-yasg = "*"
 redis = "*"
 requests = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
