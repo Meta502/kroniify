@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-ltu5g#%==jus32=4htyr*iic+oecmk52=mvit)t+zppqera%eu
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
     '104.197.123.44',
     'kroniify.cloud',
     'api.kroniify.cloud',
