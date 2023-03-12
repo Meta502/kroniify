@@ -29,7 +29,10 @@ SECRET_KEY = 'django-insecure-ltu5g#%==jus32=4htyr*iic+oecmk52=mvit)t+zppqera%eu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '104.197.123.44',
+    'kroniify.cloud',
+]
 
 
 # Application definition
@@ -149,6 +152,8 @@ SWAGGER_SETTINGS = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://104.197.123.44',
+    'https://kroniify.cloud'
 ]
 
 REST_FRAMEWORK = {
