@@ -32,6 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '104.197.123.44',
     'kroniify.cloud',
+    'api.kroniify.cloud',
 ]
 
 
