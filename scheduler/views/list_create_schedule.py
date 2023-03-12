@@ -48,7 +48,8 @@ class ListCreateScheduleView(APIView):
     @swagger_auto_schema(
         responses={
             "200": ListScheduleResponseSerializer(),
-        }
+        },
+        tags=["Scheduler"]
     )
     def get(self, request):
         schedules = Schedule.objects.filter(user=request.user)
